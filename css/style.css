@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 3px 6px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+body {
+    background-color: seagreen;
+}
+
+header {
+    background-color: crimson;
+    color: white;
+    border-bottom: 2px solid black;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.help-button {
+    width: 50px;
+    height: 50px;
+    border: 5px solid seagreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal {
+    position: absolute;
+    top: 50px;
+    background-color: maroon;
+    color: white;
+    width: 95vw;
+    height: 75vh;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal p {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+h1 {
+    font-family: sans-serif;
+}
+
+.dice-row {
+    display: flex;
+}
+
+.die {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 15px;
+    height: 15vw;
+    width: 15vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin: 10px;
+}
+
+.pip {
+    background-color: black;
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+}
+
+.tl {
+    grid-area: 2/2;
+}
+
+.tr {
+    grid-area: 2/6;
+}
+
+.l {
+    grid-area: 4/2;
+}
+
+.c {
+    grid-area: 4/4;
+}
+
+.r {
+    grid-area: 4/6;
+}
+
+.bl {
+    grid-area: 6/2;
+}
+
+.br {
+    grid-area: 6/6;
+}
+
+.bottom-sec {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 25px;
+}
+
+.bottom-sec .die {
+    width: 80px;
+    height: 80px;
+}
+
+.score-hist {
+    border-top: 2px solid black;
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.score-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hist-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: green;
+    margin: 10px 0;
+    border-radius: 15px;
+    padding: 5px;
+    color: white;
+}
+
+.score-hist .die {
+    width: 80px;
+    height: 80px;
+}
+
+.modal.win {
+    width: 50vw;
+    height: auto;
+    left: 25vw;
+}
+
+.win button {
+    margin: 3px 5px;
+}

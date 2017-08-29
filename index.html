@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang='en' ng-app='app'>
+    <head>
+        <title>Petals Around the Rose</title>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link href='css/style.css' rel='stylesheet'>
+    </head>
+    <body ng-controller="mainCtrl">
+        <div class="container">
+            <header>
+                <div></div>
+                <h1>Petals Around the Rose</h1>
+                <div class="help-button" ng-click="toggleModal()"><h2>?</h2></div>
+            </header>
+            <div class="modal" ng-show="showModal" ng-click="toggleModal()">
+                <h2>About</h2>
+                <p>This is a pattern puzzle for you to solve. The name Petals Around the Rose can be very enlightening.</p>
+                <p>The computer will role 5 dice. The correct answer is an even number between 0 and 20 inclusive. Every sececutive role you may reveal the correct answer (and try to determine the pattern) or you may make a guess to the correct number. If you guess the correct number 5 times in a row, I will assume that you have assertained the pattern.</p>
+            </div>
+            <div class="dice-row">
+                <div ng-repeat="die in dice track by $index">
+                    <dice-dir num="die"></dice-dir>
+                </div>
+            </div>
+            <section class="bottom-sec">
+                <div class="guess">
+                    <form ng-submit="guess()" class="guess-form" ng-hide="showAnswer">
+                        <div>
+                            <label for="">Even number 0-20</label>
+                            <input type="text" placeholder="6" ng-model="currentGuess">
+                            <button type="submit">Guess</button>
+                        </div>
+                    </form>
+                    <div class="reroll" ng-show="showAnswer"><button ng-click="reroll()">Reroll</button></div>
+                </div>
+                <div>
+                    <button ng-hide="showAnswer" ng-click="revealAnswer()">Reveal Answer</button>
+                    <h2 ng-show="showAnswer">{{sum}}</h2>
+                </div>
+            </section>
+        </div>
+        <div class="score-hist">
+            <div class="score-area">
+                <h3>Score: </h3>
+                <dice-dir ng-show="correctGuesses" num="correctGuesses"></dice-dir>
+            </div>
+            <div class="history-area" ng-show="history.length">
+                <button ng-click="toggleHistory()" ng-hide="showHistory">Show History</button>
+                <button ng-click="toggleHistory()" ng-show="showHistory">Hide History</button>
+                <div class="hist-list" ng-show="showHistory">
+                    <div class="hist-item" ng-repeat="item in history">
+                        <h5>Correct Answer: {{item.answer}}</h5>
+                        <div class="dice-row">
+                            <div ng-repeat="die in item.dice track by $index">
+                                <dice-dir num="die"></dice-dir>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal win" ng-if="correctGuesses > 4">
+            <h1>You Win!</h1>
+            <p>Did you really decern the pattern?</p>
+            <div><button ng-click="win()">Yes</button><button ng-click="reset()">No</button></div>
+        </div>
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
+        <script src="./app/app.js"></script>
+        <script src="./app/mainCtrl.js"></script>
+        <script src="./app/directives/diceDir.js"></script>
+    </body>
+</html>
